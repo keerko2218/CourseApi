@@ -21,20 +21,25 @@ public class TopicService {
     ));
 
     public List<Topic> getAllTopics(){
+        //return topics;
+        List<Topic> topics = new ArrayList<>();
+        topicRepository.findAll().forEach(topics::add);
         return topics;
     }
 
     //getting a single resource
     public Topic getTopic(String id){
         //filters the topic by if the id equals the id passed in and only takes the first element
-        return topics.stream().filter(t -> t.getId().equals(id)).findFirst().get();
+        //return topics.stream().filter(t -> t.getId().equals(id)).findFirst().get();
+        return topicRepository.findOne(id);
     }
 
     public void addTopic(Topic topic){
-        topics.add(topic);
+        topicRepository.save(topic);
     }
 
     public void updateTopic(String id, Topic topic){
+        /*
         for(int i =0; i<topics.size();i++){
             Topic t = topics.get(i);
             if(t.getId().equals(id)){
@@ -42,14 +47,18 @@ public class TopicService {
                 return;
             }
         }
+         */
+        topicRepository.save(topic);
     }
 
     public void deleteTopic(String id){
+        /*
         for(Topic t : topics){
-            if(id.equals(t.getId()) /*&& topic.getName().equals(t.getName()) && topic.getDescription().equals(t.getDescription())*/){
+            if(id.equals(t.getId()) /*&& topic.getName().equals(t.getName()) && topic.getDescription().equals(t.getDescription())){
                 topics.remove(t);
             }
-        }
+        }*/
+        topicRepository.delete(id);
     }
 }
 
