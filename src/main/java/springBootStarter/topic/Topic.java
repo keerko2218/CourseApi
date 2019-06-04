@@ -5,10 +5,10 @@ import javax.persistence.Id;
 
 //entity classes
 //this needs to be added to the database
-//@Entity
+@Entity
 public class Topic {
 
-    //@Id
+    @Id
     private String id;
     private String name;
     private String description;

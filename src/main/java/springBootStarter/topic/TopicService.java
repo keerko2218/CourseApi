@@ -1,5 +1,6 @@
 package springBootStarter.topic;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -10,6 +11,8 @@ import java.util.List;
 @Service
 
 public class TopicService {
+
+    @Autowired TopicRepository topicRepository;
 
     private List<Topic> topics = new ArrayList<>( Arrays.asList(
             new Topic("spring", "Spring Framework", "Spring Framework description"),
