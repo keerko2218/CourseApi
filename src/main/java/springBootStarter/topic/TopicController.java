@@ -1,6 +1,7 @@
 package springBootStarter.topic;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -28,6 +29,7 @@ public class TopicController {
 
 
     @PostMapping("/topics")
+    @ResponseStatus(HttpStatus.CREATED)
     // POST request
     //@RequestBody tells spring MVC that the request payload is going contain a JSON representation of the topic instance
     public void addTopic(@RequestBody Topic topic){
